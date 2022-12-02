@@ -1,5 +1,5 @@
-import * as userDao from '../../daos/UserDao.js'
-import {findByCredentials, findByUsername} from "../../daos/UserDao.js";
+import * as userDao from '../daos/UserDao.js'
+import {findByCredentials, findByUsername} from "../daos/UserDao.js";
 
 const findUser = async (req, res) => {
     const user = await userDao.findUser(req.params.usid);
