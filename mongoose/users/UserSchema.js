@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     email: String,
+    phoneNumber: Number,
     accountType: {type: String, enum: ["ADMIN", "USER", "REVIEWER"]},
 }, {collection: "users"});
 
