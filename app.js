@@ -6,6 +6,7 @@ import UsersController from "./controllers/users-controller.js";
 import SessionController from "./controllers/session-controller.js";
 
 import mongoose from "mongoose";
+import FollowingController from "./controllers/following-controller.js";
 
 const options = {
     useNewUrlParser: true,
@@ -36,4 +37,5 @@ app.use(express.json());
 HelloController(app);
 UsersController(app);
 SessionController(app);
+FollowingController(app);
 app.listen(4000);
