@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 
 const followingSchema = mongoose.Schema({
     userId: {type: Schema.Types.ObjectId, ref: "UserModel"},
