@@ -1,4 +1,5 @@
 import * as userDao from '../daos/UserDao.js'
+import {searchByUsername} from "../daos/UserDao.js";
 
 let currentUser = null
 
@@ -48,7 +49,7 @@ const UsersController = (app) => {
         const credentials = req.body
         const existingUser = await userDao
             .findByCredentials
-                (credentials.username, credentials.password)
+            (credentials.username, credentials.password)
         if (!existingUser) {
             res.sendStatus(401)
             return
@@ -70,6 +71,12 @@ const UsersController = (app) => {
         }
     }
 
+    const searchByUsername = async (req, res) => {
+
+        const user = await userDao.searchByUsername(req.params.uname);
+        res.json(user);
+    }
+
     app.get('/profile/all', findAllUsers);
     app.get('/profile/:usid', findUser);
     app.get('/profile', profile)
@@ -78,6 +85,7 @@ const UsersController = (app) => {
     app.post('/register', registerUser)
     app.post('/login', login)
     app.post('/logout', logout)
+    app.get('/searchByUsername/:uname', searchByUsername)
 }
 
 export default UsersController
