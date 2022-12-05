@@ -1,7 +1,6 @@
 import * as followingDao from '../daos/FollowingDao.js'
 
 const addFollower = async (req, res) => {
-    console.log("here 1")
     const following = req.body;
     const insertFollower = await followingDao.createFollowing(following)
     res.json(insertFollower);
