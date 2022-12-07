@@ -1,6 +1,6 @@
 import animeModel from "../mongoose/anime/AnimeModel.js";
 
-export const findAnime = (id) => animeModel.findById(id);
+export const findAnime = (aid) => animeModel.findOne({animeId: aid});
 
 export const createAnime = (anime) => animeModel.create(anime);
 
