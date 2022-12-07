@@ -7,4 +7,4 @@ const reviewSchema = mongoose.Schema({
                                        rating: Number,
                                    }, {collection: "reviews"});
 
-export default ReviewScehma;
+export default reviewSchema;

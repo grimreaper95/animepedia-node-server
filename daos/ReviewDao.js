@@ -1,4 +1,4 @@
-import reviewModel from "../mongoose/reviews/ReviewModel";
+import reviewModel from "../mongoose/reviews/ReviewModel.js";
 
 export const createReview = (review) => reviewModel.create(review);
 

@@ -1,15 +1,19 @@
 import *  as  adminDao from '../daos/AdminDao.js'
+import adminModel from "../mongoose/admin/AdminModel.js";
 
 const AdminController = (app) => {
 
     const login = async (req, res) => {
         const credentials = req.body;
         const adminLogin = await adminDao.findByCredentials(credentials.username, credentials.password);
-        if (!adminLogin) {
+        console.log(adminLogin)
+        if (adminLogin.length === 0) {
             res.sendStatus(401)
-            return
+
+        }else {
+            res.json(adminLogin)
         }
-        res.json(adminLogin)
+
 
 
     }
@@ -27,9 +31,19 @@ const AdminController = (app) => {
 
     }
 
+    const addReviewer = async (req, res) => {
+        const reviewerId = req.params.rid;
+        const reviewer = req.body;
+        const status = await adminDao.updateReviewerList(reviewerId, reviewer);
+        res.json(status)
+
+
+    }
+
     app.get("/admin/login", login);
     app.post("/admin", addAmin)
     app.get("/admin/list/:aid", getApprovedReviewerList)
+    app.put("/admin/add-reviewer/:rid", addReviewer)
 }
 
 export default AdminController;
