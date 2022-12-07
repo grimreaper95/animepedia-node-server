@@ -8,6 +8,7 @@ import SessionController from "./controllers/session-controller.js";
 import mongoose from "mongoose";
 import FollowingController from "./controllers/following-controller.js";
 import AnimeController from "./controllers/anime-controller.js";
+import AdminController from "./controllers/admin-controller.js";
 
 const options = {
     useNewUrlParser: true,
@@ -31,7 +32,7 @@ app.use(session({
     secret: 'secretKEYabc',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: {secure: false}
 }))
 
 app.use(express.json({limit: '50mb'}));
@@ -40,4 +41,6 @@ UsersController(app);
 SessionController(app);
 FollowingController(app);
 AnimeController(app);
+AdminController(app);
+
 app.listen(4000);

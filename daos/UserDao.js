@@ -14,12 +14,14 @@ export const findByCredentials = (username, password) =>
         {password: false}
     );
 
-export const deleteUser = (id) => userModel.deleteOne({_id:id})
+export const deleteUser = (id) => userModel.deleteOne({_id: id})
 
 export const updateUser = (id, userUpdates) =>
     userModel.updateOne(
-        {_id:id},
+        {_id: id},
         {$set: userUpdates}
     );
 
 export const test = (id) => userModel.find({_id:id})
+export const searchByUsername = (username) =>
+    userModel.find({username: {'$regex': new RegExp("^.*" + username + ".*$"), '$options': 'i'}});
