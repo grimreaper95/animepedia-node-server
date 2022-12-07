@@ -21,3 +21,5 @@ export const updateUser = (id, userUpdates) =>
         {_id:id},
         {$set: userUpdates}
     );
+
+export const test = (id) => userModel.find({_id:id})
