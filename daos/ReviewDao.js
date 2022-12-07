@@ -6,4 +6,4 @@ export const removeReview = (id) => reviewModel.deleteOne(id);
 
 export const findAllAnimeReviews = (animeId) => reviewModel.find({animeId : animeId});
 
-export const findAllUserReviews = (id) => reviewModel.find({reviewBy : id});
+export const findAllUserReviews = (user) => reviewModel.find({reviewBy : user});

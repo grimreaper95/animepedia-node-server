@@ -9,6 +9,7 @@ import mongoose from "mongoose";
 import FollowingController from "./controllers/following-controller.js";
 import AnimeController from "./controllers/anime-controller.js";
 import AdminController from "./controllers/admin-controller.js";
+import ReviewController from "./controllers/review-controller.js";
 
 const options = {
     useNewUrlParser: true,
@@ -42,5 +43,6 @@ SessionController(app);
 FollowingController(app);
 AnimeController(app);
 AdminController(app);
+ReviewController(app);
 
 app.listen(4000);
