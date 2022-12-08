@@ -11,7 +11,9 @@ const AdminController = (app) => {
 
         }
         req.session['currentAdmin'] = adminLogin
+
         res.json(adminLogin)
+
 
 
     }
@@ -40,6 +42,7 @@ const AdminController = (app) => {
 
     const getLoggedInAdmin = async (req, res) => {
         if (req.session['currentAdmin']) {
+            console.log(req.session['currentAdmin'])
             res.send(req.session['currentAdmin'])
         } else {
             res.sendStatus(403)
