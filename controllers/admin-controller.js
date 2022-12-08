@@ -10,6 +10,7 @@ const AdminController = (app) => {
             return
 
         }
+        req.session['currentAdmin'] = adminLogin
         res.json(adminLogin)
 
 
@@ -37,10 +38,25 @@ const AdminController = (app) => {
 
     }
 
+    const getLoggedInAdmin = async (req, res) => {
+        if (req.session['currentAdmin']) {
+            res.send(req.session['currentAdmin'])
+        } else {
+            res.sendStatus(403)
+        }
+    }
+
+    const logout = async (req, res) => {
+        req.session.destroy()
+        res.sendStatus(200)
+    }
+
     app.post("/admin/login", login);
     app.post("/admin", addAmin)
     app.get("/admin/list/:aid", getApprovedReviewerList)
     app.put("/admin/add-reviewer/:rid", addReviewer)
+    app.get("/admin/details", getLoggedInAdmin)
+    app.post('admin/logout', logout)
 }
 
 export default AdminController;
