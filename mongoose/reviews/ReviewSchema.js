@@ -1,7 +1,7 @@
 import mongoose, {Schema} from 'mongoose';
 
 const reviewSchema = mongoose.Schema({
-                                       animeId: {type: Schema.Types.ObjectId, ref: "AnimeModel"},
+                                       animeId: Number,
                                        reviewBy:  {type: Schema.Types.ObjectId, ref: "UserModel"},
                                        review: String,
                                        rating: Number,
