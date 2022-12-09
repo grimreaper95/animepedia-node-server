@@ -1,10 +1,12 @@
 import * as reviewerDao from '../daos/ReviewerDao.js'
+import userModel from "../mongoose/users/UserModel.js";
 
 const ReviewerController = (app) => {
 
     const addReviewer = async (req, res) => {
         const reviewer = req.body;
         const inserted = await reviewerDao.createReviewer(reviewer);
+        const insertIntoUser = await userModel.create(reviewer)
         res.json(inserted)
     }
 
