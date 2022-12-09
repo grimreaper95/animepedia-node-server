@@ -10,6 +10,7 @@ import FollowingController from "./controllers/following-controller.js";
 import AnimeController from "./controllers/anime-controller.js";
 import AdminController from "./controllers/admin-controller.js";
 import ReviewController from "./controllers/review-controller.js";
+import ReviewerController from "./controllers/reviewer-controller.js";
 
 const options = {
     useNewUrlParser: true,
@@ -39,10 +40,11 @@ app.use(session({
 app.use(express.json({limit: '50mb'}));
 HelloController(app);
 UsersController(app);
+AdminController(app);
 SessionController(app);
 FollowingController(app);
 AnimeController(app);
-AdminController(app);
 ReviewController(app);
+ReviewerController(app)
 
 app.listen(4000);
