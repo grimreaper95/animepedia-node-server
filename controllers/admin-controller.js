@@ -42,7 +42,7 @@ const AdminController = (app) => {
 
     const getLoggedInAdmin = async (req, res) => {
         if (req.session['currentAdmin']) {
-            console.log(req.session['currentAdmin'])
+
             res.send(req.session['currentAdmin'])
         } else {
             res.sendStatus(403)
@@ -59,7 +59,7 @@ const AdminController = (app) => {
     app.get("/admin/list/:aid", getApprovedReviewerList)
     app.put("/admin/add-reviewer/:rid", addReviewer)
     app.get("/admin/details", getLoggedInAdmin)
-    app.post('admin/logout', logout)
+    app.post('/admin/logout', logout)
 }
 
 export default AdminController;
