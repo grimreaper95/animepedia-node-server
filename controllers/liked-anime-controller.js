@@ -3,7 +3,6 @@ import {findAnimeLikedByUser} from "../daos/LikedAnimeDao.js";
 
 const LikedAnimeController = (app) => {
     const addLikedAnime = async (req, res) => {
-        // console.log('abc')
 
         const userLikedAnime = req.body;
         const userAnimePair = await likedAnimeDao.findAnimeLikedByUser(userLikedAnime.userId, userLikedAnime.animeId)
@@ -27,6 +26,15 @@ const LikedAnimeController = (app) => {
         res.json(totalLikes)
     }
 
+    const findUserLikesAnime = async (req, res) => {
+        const userLikesAnime = await likedAnimeDao.findAnimeLikedByUser(req.params.usid, req.params.animeid)
+        if (userLikesAnime)
+            res.json(true)
+        else
+            res.json(false)
+    }
+
+    app.get('/userlikesanime/:usid/:animeid', findUserLikesAnime)
     app.get('/likescount/:animeid', findLikesCount);
     app.get('/like/:usid', findAllLikedAnime);
     app.post('/like', addLikedAnime);
