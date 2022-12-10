@@ -1,8 +1,10 @@
-import mongoose from "mongoose";
+import mongoose, {Schema}  from "mongoose";
 
 const likedAnimeSchema = mongoose.Schema({
     userId:{type: Schema.Types.ObjectId, ref:"UserModel"},
-    animeId : {type: Schema.Types.ObjectId, ref:"AnimeModel"}
-}, {collection:"likedAnimes"});
+    animeId : String,
+    animeImage: String,
+    animeTitle: String
+}, {collection:"likedAnime"});
 
 export default likedAnimeSchema;
