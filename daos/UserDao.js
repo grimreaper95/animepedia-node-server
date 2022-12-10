@@ -25,3 +25,5 @@ export const updateUser = (id, userUpdates) =>
 export const test = (id) => userModel.find({_id:id})
 export const searchByUsername = (username) =>
     userModel.find({username: {'$regex': new RegExp("^.*" + username + ".*$"), '$options': 'i'}});
+
+export const findByUsernameRev = (username) => userModel.findOne( {username : username});
