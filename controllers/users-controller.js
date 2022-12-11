@@ -1,5 +1,5 @@
 import * as userDao from '../daos/UserDao.js'
-import {searchByUsername} from "../daos/UserDao.js";
+import {findByUsername, findByUsernameRev, searchByUsername} from "../daos/UserDao.js";
 
 let currentUser = null
 
@@ -77,6 +77,12 @@ const UsersController = (app) => {
         res.json(user);
     }
 
+    const findUserId = async (req, res) => {
+        const username = req.params.uname
+        const userId = await userDao.findByUsernameRev(username);
+        res.json(userId)
+    }
+
     app.get('/profile/all', findAllUsers);
     app.get('/profile/:usid', findUser);
     app.get('/profile', profile)
@@ -86,6 +92,7 @@ const UsersController = (app) => {
     app.post('/login', login)
     app.post('/logout', logout)
     app.get('/searchByUsername/:uname', searchByUsername)
+    app.get('/user/reviewer/:uname', findUserId)
 }
 
 export default UsersController
