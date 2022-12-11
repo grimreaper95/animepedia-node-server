@@ -37,7 +37,7 @@ const ReviewController = (app) => {
     }
 
     const removeReview = async (req, res) => {
-         const status = await reviewDao.removeReview(rid)
+         const status = await reviewDao.removeReview(req.params.rid)
         res.json(status);
     }
 
