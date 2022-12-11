@@ -18,5 +18,4 @@ export const findReviewerExist = (username) => reviewerModel.findOne({
                                                                  approved: true
                                                              });
 
-
-
+export const findByUsername = (username) => reviewerModel.findOne({username});

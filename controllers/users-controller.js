@@ -65,7 +65,7 @@ const UsersController = (app) => {
     }
 
     const profile = (req, res) => {
-        console.log("sess" ,req.session['currentUser'] )
+        // console.log("sess" ,req.session['currentUser'] )
         if (req.session['currentUser']) {
             res.send(req.session['currentUser'])
         } else {

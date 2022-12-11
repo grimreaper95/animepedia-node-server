@@ -40,12 +40,26 @@ const ReviewerController = (app) => {
         res.json(approved)
     }
 
+    const registerReviewer = async (req, res) => {
+        const reviewer = req.body
+        const existingReviewer = await reviewerDao.findByUsername(reviewer.username)
+        if (existingReviewer) {
+            res.sendStatus(403)
+            return
+        }
+        const insertedReviewer = await reviewerDao.createReviewer(reviewer)
+        res.json(insertedReviewer)
+        console.log('registered as reviewer on server!');
+    }
+
     const findReviewerExist = async (req, res) => {
         const username = req.params.username;
         const rev = await reviewerDao.findReviewerExist(username);
         res.json(rev)
     }
 
+
+    app.post('/register-reviewer', registerReviewer);
     app.post('/reviewer', addReviewer);
     app.get('/reviewer/pending', findPendingReviewers)
     app.get('/reviewer/approved', findApprovedReviewers)
