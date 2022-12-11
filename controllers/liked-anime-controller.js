@@ -14,6 +14,18 @@ const LikedAnimeController = (app) => {
         res.json(addedAnime);
     }
 
+    const removeLikedAnime = async (req, res) => {
+
+        const userDislikedAnime = req.body;
+        const userAnimePair = await likedAnimeDao.findAnimeLikedByUser(userDislikedAnime.userId, userDislikedAnime.animeId)
+        if (!userAnimePair) {
+            res.sendStatus(403)
+            return
+        }
+        const removedAnime = await likedAnimeDao.removeLikedAnime(userDislikedAnime)
+        res.json(removedAnime);
+    }
+
     const findAllLikedAnime = async (req, res) => {
         const userId = req.params.usid;
         const likedAnime = await likedAnimeDao.findAllLikedAnime(userId);
@@ -38,6 +50,7 @@ const LikedAnimeController = (app) => {
     app.get('/likescount/:animeid', findLikesCount);
     app.get('/like/:usid', findAllLikedAnime);
     app.post('/like', addLikedAnime);
+    app.post('/dislike', removeLikedAnime);
 }
 
 export default LikedAnimeController;
