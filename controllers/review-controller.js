@@ -41,10 +41,25 @@ const ReviewController = (app) => {
         res.json(status);
     }
 
+    const findAverageRating = async (req, res) => {
+        const animeReviews = await reviewDao.findAllAnimeReviews(req.params.aid);
+        let sumRating = 0;
+        let avgRating = 0;
+        for(let i in animeReviews) {
+            sumRating += animeReviews[i].rating
+        }
+        const totalReviews = Object.keys(animeReviews).length;
+        if (totalReviews > 0) {
+            avgRating = Math.round((sumRating/totalReviews) * 10) / 10
+        }
+        res.json(avgRating);
+    }
+
     app.get('/review/anime/:aid', findAllReviewsForAnime);
     app.get('/review/user/:uid', findAllReviewsByUser);
     app.post('/review', createReview)
     app.delete('/remove-review/:rid', removeReview)
+    app.get('/review/avg-rating/:aid', findAverageRating)
 }
 
 export default ReviewController
