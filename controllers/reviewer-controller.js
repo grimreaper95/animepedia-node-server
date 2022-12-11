@@ -1,5 +1,6 @@
 import * as reviewerDao from '../daos/ReviewerDao.js'
 import userModel from "../mongoose/users/UserModel.js";
+import {findReviewerExist} from "../daos/ReviewerDao.js";
 
 const ReviewerController = (app) => {
 
@@ -37,9 +38,13 @@ const ReviewerController = (app) => {
     const findApprovedReviewers = async (req, res) => {
         const approved = await reviewerDao.findApprovedList();
         res.json(approved)
-
     }
 
+    const findReviewerExist = async (req, res) => {
+        const username = req.params.username;
+        const rev = await reviewerDao.findReviewerExist(username);
+        res.json(rev)
+    }
 
     app.post('/reviewer', addReviewer);
     app.get('/reviewer/pending', findPendingReviewers)
@@ -47,6 +52,7 @@ const ReviewerController = (app) => {
     app.put('/reviewer/update/:rId', updateReviewer)
     app.delete('/reviewer/delete/:rId', deleteReviewer)
     app.get('/reviewer/:rId', findReviewer)
+    app.get('/reviewer/user/:username', findReviewerExist)
 
 
 }
