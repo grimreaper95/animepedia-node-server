@@ -9,7 +9,7 @@ const ReviewController = (app) => {
             console.log("animeReviews[i]", animeReviews[i])
             console.log("rev", rev)
             const obj = {
-                "review": animeReviews[i],
+                ...animeReviews[i]["_doc"],
                 "reviewer": rev
             };
             console.log("obj", obj)
