@@ -1,9 +1,22 @@
 import * as reviewDao from '../daos/ReviewDao.js'
-
+import {findUser} from "../daos/UserDao.js";
 const ReviewController = (app) => {
     const findAllReviewsForAnime = async (req, res) => {
         const animeReviews = await reviewDao.findAllAnimeReviews(req.params.aid);
-        res.json(animeReviews);
+        let returnVal = []
+        for(let i in animeReviews) {
+            const rev = await findUser(animeReviews[i].reviewBy)
+            console.log("animeReviews[i]", animeReviews[i])
+            console.log("rev", rev)
+            const obj = {
+                "review": animeReviews[i],
+                "reviewer": rev
+            };
+            console.log("obj", obj)
+            returnVal.push(obj)
+        }
+        console.log(returnVal)
+        res.json(returnVal);
     }
 
     const findAllReviewsByUser = async (req, res) => {
@@ -14,7 +27,13 @@ const ReviewController = (app) => {
     const createReview = async (req, res) => {
         const review = req.body;
         const newReview = await reviewDao.createReview(review);
-        res.json(newReview);
+        console.log(newReview)
+        const rev = await findUser(newReview['reviewBy'])
+        const obj = {
+            "review": newReview,
+            "reviewer": rev
+        };
+        res.json(obj);
     }
 
     const removeReview = async (req, res) => {
