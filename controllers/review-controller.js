@@ -30,7 +30,7 @@ const ReviewController = (app) => {
         console.log(newReview)
         const rev = await findUser(newReview['reviewBy'])
         const obj = {
-            "review": newReview,
+            ...newReview["_doc"],
             "reviewer": rev
         };
         res.json(obj);
