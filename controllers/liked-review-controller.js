@@ -13,13 +13,13 @@ const LikedReviewController = (app) => {
         res.json(addedAnime);
     }
 
-    const findReviewCount = async (req, res) => {
+    const findReviewLikeCount = async (req, res) => {
         const reviewId = req.params.rid;
         const totalLikes = await likedReviewDao.findLikesCount(reviewId);
         res.json(totalLikes)
     }
 
-    const findUserReviewAnime = async (req, res) => {
+    const findUserLikeReview = async (req, res) => {
         const userLikesAnime = await likedReviewDao.findReviewLikedByUser(req.params.uid, req.params.rid)
         if (userLikesAnime)
             res.json(true)
@@ -27,8 +27,8 @@ const LikedReviewController = (app) => {
             res.json(false)
     }
 
-    app.get('/userlikesreview/:uid/:rid', findUserReviewAnime)
-    app.get('/reviewlikescount/:rid', findReviewCount);
+    app.get('/userlikesreview/:uid/:rid', findUserLikeReview)
+    app.get('/reviewlikescount/:rid', findReviewLikeCount);
     app.post('/likereview', addLikedReview);
 }
 
