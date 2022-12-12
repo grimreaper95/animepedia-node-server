@@ -52,4 +52,4 @@ ReviewerController(app);
 LikedAnimeController(app);
 LikedReviewController(app);
 
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
