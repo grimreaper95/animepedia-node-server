@@ -28,10 +28,28 @@ mongoose.connect(CONNECTION_STRING, options);
 
 const app = express()
 
-app.use(cors({
-    credentials: true,
-    origin: 'https://main--clever-puffpuff-05a6ef.netlify.app/'
-}))
+
+
+const app = express();
+
+const corsOpts = {
+    origin: '*',
+
+    methods: [
+        'DELETE',
+        'PUT',
+        'GET',
+        'POST',
+    ],
+
+    allowedHeaders: [
+        'Content-Type',
+    ],
+};
+
+app.use(cors(corsOpts))
+
+// app.use(cors())
 
 app.use(session({
     secret: 'secretKEYabc',
