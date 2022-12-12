@@ -47,9 +47,12 @@ app.set('trust proxy', 1)
 app.use(session({
     secret: 'secretKEYabc',
     resave: false,
+    name: 'cookieName',
     saveUninitialized: true,
     cookie: {
-        secure: (process.env.NODE_ENV && process.env.NODE_ENV == 'production') ? true:false
+        secure: true,
+        httpOnly: false,
+        sameSite: 'none'
     }
 }))
 
