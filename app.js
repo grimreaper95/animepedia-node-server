@@ -29,9 +29,6 @@ mongoose.connect(CONNECTION_STRING, options);
 const app = express()
 
 
-
-const app = express();
-
 const corsOpts = {
     origin: '*',
 
