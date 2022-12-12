@@ -1,5 +1,4 @@
 import * as likedAnimeDao from "../daos/LikedAnimeDao.js";
-import {findAnimeLikedByUser} from "../daos/LikedAnimeDao.js";
 
 const LikedAnimeController = (app) => {
     const addLikedAnime = async (req, res) => {

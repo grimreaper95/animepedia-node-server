@@ -12,6 +12,7 @@ import AdminController from "./controllers/admin-controller.js";
 import ReviewController from "./controllers/review-controller.js";
 import ReviewerController from "./controllers/reviewer-controller.js";
 import LikedAnimeController from "./controllers/liked-anime-controller.js";
+import LikedReviewController from "./controllers/liked-review-controller.js";
 
 const options = {
     useNewUrlParser: true,
@@ -46,7 +47,8 @@ SessionController(app);
 FollowingController(app);
 AnimeController(app);
 ReviewController(app);
-ReviewerController(app)
-LikedAnimeController(app)
+ReviewerController(app);
+LikedAnimeController(app);
+LikedReviewController(app);
 
 app.listen(4000);
