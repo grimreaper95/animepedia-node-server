@@ -1,4 +1,4 @@
-import likedReviewModel from "../mongoose/likedReview/likedReviewModel.js";
+import likedReviewModel from "../mongoose/likedReview/LikedReviewModel.js";
 
 export const addLikedReview = (userLikedReview) => likedReviewModel.create(userLikedReview);
 

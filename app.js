@@ -27,6 +27,7 @@ const CONNECTION_STRING = 'mongodb+srv://anime-webdev:p0mAHNcE4K44uPNU@cluster0.
 mongoose.connect(CONNECTION_STRING, options);
 
 const app = express()
+
 app.use(cors({
     credentials: true,
     origin: 'https://main--clever-puffpuff-05a6ef.netlify.app/'
