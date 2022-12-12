@@ -27,10 +27,21 @@ const CONNECTION_STRING = 'mongodb+srv://anime-webdev:p0mAHNcE4K44uPNU@cluster0.
 mongoose.connect(CONNECTION_STRING, options);
 
 const app = express()
+
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: 'https://main--clever-puffpuff-05a6ef.netlify.app'
 }))
+
+
+// //
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Credentials", true);
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
+
 
 app.use(session({
     secret: 'secretKEYabc',
@@ -51,4 +62,4 @@ ReviewerController(app);
 LikedAnimeController(app);
 LikedReviewController(app);
 
-app.listen(4000);
+app.listen(process.env.PORT || 4000);

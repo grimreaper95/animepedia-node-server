@@ -1,4 +1,4 @@
-import * as likedReviewDao from "../daos/likedReviewDao.js";
+import * as likedReviewDao from "../daos/LikedReviewDao.js";
 
 const LikedReviewController = (app) => {
     const addLikedReview = async (req, res) => {

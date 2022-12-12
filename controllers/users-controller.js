@@ -69,6 +69,7 @@ const UsersController = (app) => {
         if (req.session['currentUser']) {
             res.send(req.session['currentUser'])
         } else {
+            console.log('session not found!')
             res.sendStatus(403)
         }
     }
