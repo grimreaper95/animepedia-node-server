@@ -28,23 +28,29 @@ mongoose.connect(CONNECTION_STRING, options);
 
 const app = express()
 
-//
-// const corsOpts = {
-//     origin: '*',
-//
-//     methods: [
-//         'DELETE',
-//         'PUT',
-//         'GET',
-//         'POST',
-//     ],
-//
-//     allowedHeaders: [
-//         'Content-Type',
-//     ],
-// };
 
-app.use(cors())
+const corsOpts = {
+    origin: '*',
+
+    methods: [
+        'DELETE',
+        'PUT',
+        'GET',
+        'POST',
+    ],
+
+    allowedHeaders: [
+        'Content-Type',
+    ],
+};
+
+app.use(cors(corsOpts))
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 // app.use(cors())
 
