@@ -29,7 +29,7 @@ mongoose.connect(CONNECTION_STRING, options);
 const app = express()
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: 'https://main--clever-puffpuff-05a6ef.netlify.app/'
 }))
 
 app.use(session({
