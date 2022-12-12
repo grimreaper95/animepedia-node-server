@@ -28,23 +28,23 @@ mongoose.connect(CONNECTION_STRING, options);
 
 const app = express()
 
+//
+// const corsOpts = {
+//     origin: '*',
+//
+//     methods: [
+//         'DELETE',
+//         'PUT',
+//         'GET',
+//         'POST',
+//     ],
+//
+//     allowedHeaders: [
+//         'Content-Type',
+//     ],
+// };
 
-const corsOpts = {
-    origin: '*',
-
-    methods: [
-        'DELETE',
-        'PUT',
-        'GET',
-        'POST',
-    ],
-
-    allowedHeaders: [
-        'Content-Type',
-    ],
-};
-
-app.use(cors(corsOpts))
+app.use(cors())
 
 // app.use(cors())
 
