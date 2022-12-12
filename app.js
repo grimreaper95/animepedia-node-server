@@ -30,7 +30,7 @@ const app = express()
 
 app.use(cors({
     credentials: true,
-    origin: 'https://main--clever-puffpuff-05a6ef.netlify.app/'
+    origin: 'https://main--clever-puffpuff-05a6ef.netlify.app'
 }))
 
 
