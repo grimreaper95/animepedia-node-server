@@ -28,6 +28,7 @@ mongoose.connect(CONNECTION_STRING, options);
 
 const app = express()
 
+app.set('trust proxy', 1)
 app.use(cors({
     credentials: true,
     origin: 'https://main--clever-puffpuff-05a6ef.netlify.app'
